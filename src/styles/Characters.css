@@ -17,12 +17,22 @@
     border-radius: 5px;
 }
 
+.bg-dark .item-card{
+    background-color: #157ec0;
+}
+
 .item-card__img{
     width: 100%;
 }
 
 .item-card__name{
     font-size: 15px;
+    margin-bottom: 0;
+}
+
+.item-card__origin{
+    font-size: 12px;
+    margin-bottom: 0;
 }
 
 .item-card__btnFavorite{

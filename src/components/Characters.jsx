@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer } from 'react';
+import React, { useState, useEffect, useReducer, useMemo, useRef, useCallback } from 'react';
 import '../styles/Characters.css'
 
 const initialState = {
@@ -18,9 +18,10 @@ const favoriteReducer = (state, action) => {
 }
 
 const Characters = () => {
-
     const [characters, setCharacters] = useState([]);
     const [favorites, dispatch] = useReducer(favoriteReducer, initialState);
+    const [search, setSearch] = useState('');
+    const searchInput = useRef(null);
 
     useEffect(() => {
         fetch('https://rickandmortyapi.com/api/character/')
@@ -35,6 +36,21 @@ const Characters = () => {
         })
     }
 
+    const handleSearch = () => {
+        setSearch(searchInput.current.value);
+    }
+
+    // const filteredUsers = characters.filter((user) => {
+    //     return user.name.toLowerCase().includes(search.toLowerCase());
+    // })
+
+    const filteredUsers = useMemo(() =>
+        characters.filter((user) => {
+            return user.name.toLowerCase().includes(search.toLowerCase());
+        }),
+        [characters, search]
+    )
+
     return (
         <div className="Characters">
             <h3>Favoritos</h3>
@@ -46,13 +62,18 @@ const Characters = () => {
                     </div>
                 ))}
             </div>
-            <hr/>
+            <hr />
+            <div className="Search">
+                <input type="text" value={search} ref={searchInput} onChange={handleSearch} />
+            </div>
+            <hr />
             <div className="characters-container">
-                {characters.map(character => (
+                {filteredUsers.map(character => (
                     <div className="item-card" key={character.id}>
                         <img className="item-card__img" src={character.image} alt={character.name} />
                         <h2 className="item-card__name">{character.name}</h2>
-                        <button className="item-card__btnFavorite" onClick={() => handleClick(character)}>Agregar a favorito</button>
+                        <h3 className="item-card__origin">{character.origin.name}</h3>
+                        <button className="btn item-card__btnFavorite" onClick={() => handleClick(character)}>Agregar a favorito</button>
                     </div>
                 ))}
             </div>
