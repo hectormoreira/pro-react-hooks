@@ -21,7 +21,7 @@ Un `Hook` es una función especial que nos permitirá conectarnos a característ
 - useMemo nos permitirá usar la memoización de forma simple
 - Esto nos permite almacenar los resultados de una función para que, en caso de enviar los mismos argumentos que antes, ésta no haga los cálculos otra vez sino que devuelva el resultado que registró antes.
 
-- **useCallback**: evita cálculos innecesarios en funciones10/45
+- **useCallback**: evita cálculos innecesarios en funciones
 
 
 
