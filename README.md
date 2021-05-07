@@ -1,5 +1,10 @@
-# pro-react-hooks
+
+
+# React Hooks - Platzi
 Notas y repo del Curso Profesional de React Hooks de Platzi
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/ca9d0728-31d8-4d54-8a31-a1de4c391615/deploy-status)](https://app.netlify.com/sites/proreacthooks-hectormoreira/deploys)
+- [Proyecto en Netlify](https://proreacthooks-hectormoreira.netlify.app/)
 
 ```sh
 npx create-react-app react-hooks
@@ -22,6 +27,9 @@ Un `Hook` es una función especial que nos permitirá conectarnos a característ
 - Esto nos permite almacenar los resultados de una función para que, en caso de enviar los mismos argumentos que antes, ésta no haga los cálculos otra vez sino que devuelva el resultado que registró antes.
 
 - **useCallback**: evita cálculos innecesarios en funciones
+- **Custom hooks**: abstracción en la lógica de tus componentes
+
+
 
 
 
